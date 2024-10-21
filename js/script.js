@@ -1,9 +1,12 @@
 const cards = document.querySelectorAll('.card')
-const num_parejas = document.querySelector('.container h2 span')
-let span_intentos = document.querySelector("#intentos")
+const num_parejas = document.querySelector('#parejas')
+const span_intentos = document.querySelector("#intentos")
+const span_resto = document.querySelector('#resto')
 let card_1, card_2
 let deshabilitarCartas = false
 let parejas = 0
+let intentos = 0
+let resto = 16
 let sonidos = document.querySelector("#sonidos")
 sonidos.volume = 0.1
 let fondo = document.querySelector("#fondo")
@@ -26,13 +29,23 @@ escuchar.addEventListener("click", sonidoDeFondo)
 
 const sonIguales = (img1, img2)=> {
     intentos ++
-    span_intentos.innerHTML = intentos
-        
-    if (img1 === img2){
+    resto --
+    span_resto.innerHTML = resto
+    
+    span_intentos.innerHTML = intentos 
+    if (intentos >= 16){
+        setTimeout(()=>{
+    
+            return reiniciarJuego()
+        },1000)
+    }
+
+    if (img1 === img2){  
         sonidos.src="sonido/success.mp3"
         sonidos.play()
         parejas ++
         num_parejas.innerHTML = parejas
+        
         
         if(parejas === 8){
             sonidos.src="sonido/win.mp3"
