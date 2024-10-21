@@ -10,6 +10,12 @@
 </head>
 <body>
     <div class="container">
+        
+            <h2>
+                Parejas: <span>0</span>de<span id="intentos">0</span> intentos 
+                <button id="escuchar">Quitar sonido</button>
+            </h2>
+        
         <div class="cards">
             <li class="card">
                 <div class="view front-view">
@@ -205,6 +211,9 @@
             </li>
         </div>
     </div>
+
+    <audio id="fondo" loop src="sonido/background.mp3" type="audio/mpeg"/>
+    <audio id="sonidos" src="" type="audio/mpeg"/>
 
     <script src="js/script.js"></script>
 </body>
