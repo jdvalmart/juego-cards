@@ -30,24 +30,24 @@ escuchar.addEventListener("click", sonidoDeFondo)
 
 
 const sonIguales = (img1, img2)=> {
-    
-    if (img1 === img2){ 
-        intentos = intentos
-        resto = resto
-    } else {
+
+    if (intentos <= 16 && img1 !== img2 ){ 
         intentos ++
         resto --
+    } else {
+        intentos = intentos
+        resto = resto
     }
     
     span_resto.innerHTML = resto
     
     span_intentos.innerHTML = intentos 
-    if (intentos >= 16){
+
+   
+    if (intentos === 16){
         setTimeout(()=>{
-            alert(`NO QUE ERA MUY FACIL ${nombre} ... PERDISTE`)
-        },1000)
-        setTimeout(()=>{
-            return reiniciarJuego()
+             alert(`NO QUE ERA MUY FACIL ${nombre} ... PERDISTE`)
+             return reiniciarJuego()
         },1000)
     }
 
@@ -63,9 +63,7 @@ const sonIguales = (img1, img2)=> {
             sonidos.src="sonido/win.mp3"
             sonidos.play()
             setTimeout(()=>{
-                return alert(`FELICITACIONES ${nombre} HAS GANADO`)
-            },1000)
-            setTimeout(()=>{
+                alert(`FELICITACIONES ${nombre} HAS GANADO`)
                 return reiniciarJuego()
             },1000)
         }
@@ -116,6 +114,8 @@ const reiniciarJuego = () => {
     fondo.src="sonido/background.mp3"
     fondo.play()
     parejas = 0
+    intentos = 0
+    resto = 16
     card_1 = card_2 = ""
     deshabilitarCartas = false
     num_parejas.innerHTML = parejas
