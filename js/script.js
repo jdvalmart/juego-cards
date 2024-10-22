@@ -1,3 +1,4 @@
+
 const cards = document.querySelectorAll('.card')
 const num_parejas = document.querySelector('#parejas')
 const span_intentos = document.querySelector("#intentos")
@@ -12,8 +13,9 @@ sonidos.volume = 0.1
 let fondo = document.querySelector("#fondo")
 fondo.volume = 0.1
 let escuchar = document.querySelector("#escuchar")
+let parrafo = document.querySelector("#parrafo")
 
-
+const nombre = prompt("Bienvenido, para jugar escribe tu nombre").toUpperCase()
 const sonidoDeFondo = (e)=>{
     if (fondo.volume == 0.0){
          fondo.volume = 0.1
@@ -28,14 +30,23 @@ escuchar.addEventListener("click", sonidoDeFondo)
 
 
 const sonIguales = (img1, img2)=> {
-    intentos ++
-    resto --
+    
+    if (img1 === img2){ 
+        intentos = intentos
+        resto = resto
+    } else {
+        intentos ++
+        resto --
+    }
+    
     span_resto.innerHTML = resto
     
     span_intentos.innerHTML = intentos 
     if (intentos >= 16){
         setTimeout(()=>{
-    
+            alert(`NO QUE ERA MUY FACIL ${nombre} ... PERDISTE`)
+        },1000)
+        setTimeout(()=>{
             return reiniciarJuego()
         },1000)
     }
@@ -46,10 +57,14 @@ const sonIguales = (img1, img2)=> {
         parejas ++
         num_parejas.innerHTML = parejas
         
+       
         
         if(parejas === 8){
             sonidos.src="sonido/win.mp3"
             sonidos.play()
+            setTimeout(()=>{
+                return alert(`FELICITACIONES ${nombre} HAS GANADO`)
+            },1000)
             setTimeout(()=>{
                 return reiniciarJuego()
             },1000)

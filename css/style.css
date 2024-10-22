@@ -112,6 +112,19 @@ body{
     }
 }
 
+#footer {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content:left;
+    padding: 5px;
+    margin-top: 5px;
+   
+}
+#footer span{
+    font-weight: bold;
+}
+
 
 
 
